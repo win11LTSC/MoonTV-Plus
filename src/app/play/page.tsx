@@ -2670,12 +2670,12 @@ function PlayPageClient() {
         setCurrentEpisodeIndex(0);
       }
 
-      // 规范URL参数（不更新title，避免循环刷新）
+      // 规范URL参数
       const newUrl = new URL(window.location.href);
       newUrl.searchParams.set('source', detailData.source);
       newUrl.searchParams.set('id', detailData.id);
       newUrl.searchParams.set('year', detailData.year);
-      // 保持原有的 title，不更新
+      newUrl.searchParams.set('title', detailData.title);
       newUrl.searchParams.delete('prefer');
       // 只有当元数据不是从文件获取时，才删除fileName参数
       if (detailData.metadataSource !== 'file') {
